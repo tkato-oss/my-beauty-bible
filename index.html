@@ -779,21 +779,61 @@ footer {
 }
 .full-inner.visible { opacity: 1; transform: translateY(0); }
 
+/* ===== BRAND LOGOS ===== */
+.brand-section {
+  margin-bottom: 48px;
+}
+
+.brand-logos-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  border: 1.5px solid;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.brand-anua      { background: #f0f8f4; color: #2a6b4a; border-color: #2a6b4a; font-family: 'Cormorant Garamond', serif; font-size: 15px; letter-spacing: 3px; }
+.brand-hanyul    { background: #f5f0eb; color: #5a3e28; border-color: #8b6340; font-family: 'Noto Serif JP', serif; font-size: 12px; letter-spacing: 2px; }
+.brand-blithe    { background: #eef4fb; color: #1a4a7a; border-color: #2e6db4; font-family: 'Cormorant Garamond', serif; font-size: 15px; letter-spacing: 4px; font-style: italic; }
+.brand-droracle  { background: #f8f2ff; color: #4a2878; border-color: #6b3fa0; font-family: 'Cormorant Garamond', serif; font-size: 13px; letter-spacing: 2px; }
+.brand-kopher    { background: #1a1a2e; color: #e8c97a; border-color: #c9a96e; font-family: 'Cormorant Garamond', serif; font-size: 15px; letter-spacing: 4px; }
+.brand-sominas   { background: #e8f4f8; color: #1a5a78; border-color: #2e8ab4; font-size: 11px; letter-spacing: 2px; }
+.brand-pixel     { background: #fff0f5; color: #8b2252; border-color: #d4609a; font-size: 11px; letter-spacing: 2px; }
+.brand-green_tomato { background: #f0f8e8; color: #3a6828; border-color: #5a9840; font-size: 11px; letter-spacing: 1.5px; }
+
 /* ===== ALL ITEMS LIST ===== */
 .items-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  gap: 10px;
 }
 
 .item-row {
   background: white;
   border-radius: 12px;
-  padding: 14px 18px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
   gap: 12px;
   border: 1px solid rgba(201,169,110,0.12);
+  transition: box-shadow 0.2s;
+}
+
+.item-row:hover {
+  box-shadow: 0 4px 16px rgba(61,43,43,0.08);
 }
 
 .item-dot {
@@ -805,8 +845,28 @@ footer {
 .dot-night { background: var(--rose); }
 .dot-both { background: linear-gradient(135deg, var(--gold), var(--rose)); }
 
-.item-name { font-size: 13px; color: var(--deep); flex: 1; }
-.item-when { font-size: 10px; color: var(--soft); letter-spacing: 1px; }
+.item-logo-tag {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+.logo-anua      { background: #f0f8f4; color: #2a6b4a; border: 1px solid #b0dac8; }
+.logo-hanyul    { background: #f5f0eb; color: #5a3e28; border: 1px solid #c8b098; }
+.logo-blithe    { background: #eef4fb; color: #1a4a7a; border: 1px solid #a0c0e8; }
+.logo-droracle  { background: #f8f2ff; color: #4a2878; border: 1px solid #c0a0e0; }
+.logo-kopher    { background: #1a1a2e; color: #e8c97a; border: 1px solid #c9a96e; }
+.logo-sominas   { background: #e8f4f8; color: #1a5a78; border: 1px solid #90c8e0; }
+.logo-pixel     { background: #fff0f5; color: #8b2252; border: 1px solid #e8a0c0; }
+.logo-green     { background: #f0f8e8; color: #3a6828; border: 1px solid #a0c880; }
+.logo-vi        { background: #fef8ee; color: #8b6010; border: 1px solid #e0c070; }
+.logo-reedle    { background: #f0f2ff; color: #2838a8; border: 1px solid #a0b0f0; }
+
+.item-name { font-size: 12.5px; color: var(--deep); flex: 1; line-height: 1.3; }
+.item-when { font-size: 10px; color: var(--soft); letter-spacing: 1px; white-space: nowrap; }
 
 /* Responsive */
 @media (max-width: 700px) {
@@ -816,6 +876,89 @@ footer {
   .eval-card { grid-template-columns: 1fr; }
   .eval-num { display: none; }
 }
+
+/* ===== QUIZ ===== */
+.quiz-section {
+  padding: 100px 40px;
+  background: linear-gradient(135deg, #2d1f3d, #3d2533, #2a2040);
+  position: relative;
+  overflow: hidden;
+}
+.quiz-section::before {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,169,110,0.08) 0%, transparent 70%);
+  top: -200px; right: -100px;
+  pointer-events: none;
+}
+.quiz-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+.quiz-inner.visible { opacity: 1; transform: translateY(0); }
+.quiz-section-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 12px;
+}
+.quiz-section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(28px, 4vw, 42px);
+  color: white;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.quiz-section-title em { font-style: italic; color: var(--rose); }
+.quiz-section-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+}
+.qz-progress { height: 3px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-bottom: 28px; overflow: hidden; }
+.qz-progress-fill { height: 100%; background: var(--gold); border-radius: 2px; transition: width 0.4s ease; }
+.qz-step { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 2px; margin-bottom: 10px; }
+.qz-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 28px; }
+.qz-q { font-family: 'Noto Serif JP', serif; font-size: 17px; font-weight: 300; color: white; margin-bottom: 20px; line-height: 1.7; }
+.qz-opts { display: flex; flex-direction: column; gap: 8px; }
+.qz-opt { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 12px 16px; cursor: pointer; font-size: 13px; color: rgba(255,255,255,0.75); text-align: left; transition: all 0.15s; line-height: 1.5; }
+.qz-opt:hover { border-color: rgba(201,169,110,0.5); background: rgba(201,169,110,0.08); color: white; }
+.qz-opt.sel { border-color: var(--gold); background: rgba(201,169,110,0.12); color: var(--gold-light); font-weight: 400; }
+.qz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+.qz-btn { background: transparent; border: 1px solid rgba(255,255,255,0.2); border-radius: 100px; padding: 10px 24px; cursor: pointer; font-size: 13px; color: rgba(255,255,255,0.6); transition: all 0.15s; }
+.qz-btn:hover { background: rgba(255,255,255,0.06); color: white; }
+.qz-btn.gold { background: var(--gold); border-color: var(--gold); color: #2d1f3d; font-weight: 500; }
+.qz-btn.gold:hover { opacity: 0.9; }
+.qz-btn:disabled { opacity: 0.2; cursor: not-allowed; }
+.qz-result { }
+.qz-result-top { text-align: center; padding: 28px; background: rgba(255,255,255,0.05); border: 1px solid rgba(201,169,110,0.2); border-radius: 20px; margin-bottom: 20px; }
+.qz-result-type { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 300; margin-bottom: 6px; }
+.qz-result-en { font-size: 12px; letter-spacing: 3px; color: rgba(255,255,255,0.4); margin-bottom: 20px; display: block; text-transform: uppercase; }
+.qz-inner-dry-note { background: rgba(201,169,110,0.1); border: 1px solid rgba(201,169,110,0.25); border-radius: 12px; padding: 12px 16px; font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.7; margin-top: 12px; text-align: left; }
+.qz-scores { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.qz-score-item { text-align: center; }
+.qz-score-label { font-size: 10px; color: rgba(255,255,255,0.4); margin-bottom: 6px; display: block; }
+.qz-score-ring { width: 44px; height: 44px; margin: 0 auto 4px; position: relative; }
+.qz-score-ring svg { transform: rotate(-90deg); }
+.qz-score-pct { font-family: 'Cormorant Garamond', serif; font-size: 13px; color: white; }
+.qz-tips { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+.qz-tips-title { font-size: 11px; letter-spacing: 2px; color: rgba(255,255,255,0.35); margin-bottom: 14px; text-transform: uppercase; }
+.qz-tip { font-size: 13px; color: rgba(255,255,255,0.7); padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06); line-height: 1.6; display: flex; gap: 10px; align-items: flex-start; }
+.qz-tip:last-child { border-bottom: none; }
+.qz-tip-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 7px; }
+.qz-retry { width: 100%; background: transparent; border: 1px solid rgba(255,255,255,0.15); border-radius: 100px; padding: 12px; cursor: pointer; font-size: 13px; color: rgba(255,255,255,0.4); }
+.qz-retry:hover { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.3); }
 </style>
 </head>
 <body>
@@ -848,6 +991,19 @@ footer {
       <span class="stat-num">3</span>
       <span class="stat-label">夜サイクル</span>
     </div>
+  </div>
+</section>
+
+<div class="section-sep">✦ ✦ ✦</div>
+
+<!-- SKIN QUIZ -->
+<section class="quiz-section">
+  <div class="quiz-inner" id="quiz">
+    <span class="quiz-section-label">Skin Diagnosis</span>
+    <h2 class="quiz-section-title">肌タイプ<em>診断テスト</em></h2>
+    <p class="quiz-section-sub">8つの質問で、あなたの肌質と最適ケアを無料診断</p>
+    <div class="qz-progress"><div class="qz-progress-fill" id="qz-prog" style="width:12.5%"></div></div>
+    <div id="qz-body"></div>
   </div>
 </section>
 
@@ -900,29 +1056,42 @@ footer {
     <span class="section-label">Product List</span>
     <h2 class="section-title">使用アイテム<em>一覧</em></h2>
     <div class="divider"></div>
-    <div style="display:flex;gap:20px;margin-bottom:20px;flex-wrap:wrap;">
+
+    <!-- Brand logos showcase -->
+    <div class="brand-logos-row">
+      <span class="brand-badge brand-anua">Anua</span>
+      <span class="brand-badge brand-hanyul">Hanyul 한율</span>
+      <span class="brand-badge brand-blithe">Blithe</span>
+      <span class="brand-badge brand-droracle">Dr. Oracle</span>
+      <span class="brand-badge brand-kopher">KOPHER</span>
+      <span class="brand-badge brand-sominas">Sominas</span>
+      <span class="brand-badge brand-pixel">Pixel+</span>
+      <span class="brand-badge brand-green_tomato">Green Tomato</span>
+    </div>
+
+    <div style="display:flex;gap:20px;margin-bottom:16px;flex-wrap:wrap;">
       <span style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--mid)"><span class="item-dot dot-morning" style="display:inline-block"></span>朝専用</span>
       <span style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--mid)"><span class="item-dot dot-night" style="display:inline-block"></span>夜専用</span>
       <span style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--mid)"><span class="item-dot dot-both" style="display:inline-block"></span>朝夜両用</span>
     </div>
     <div class="items-grid">
-      <div class="item-row"><span class="item-dot dot-both"></span><span class="item-name">Hanyul ヨモギ クレンジングフォーム</span><span class="item-when">洗顔</span></div>
-      <div class="item-row"><span class="item-dot dot-night"></span><span class="item-name">Hanyul クレンジングパックバーム</span><span class="item-when">クレンジング</span></div>
-      <div class="item-row"><span class="item-dot dot-both"></span><span class="item-name">Anua PDRN100 ヒアルロン酸トナー</span><span class="item-when">導入化粧水</span></div>
-      <div class="item-row"><span class="item-dot dot-morning"></span><span class="item-name">Anua ビタミン3グルタチオン トナー</span><span class="item-when">美白トナー</span></div>
-      <div class="item-row"><span class="item-dot dot-morning"></span><span class="item-name">Blithe Pressed Serum</span><span class="item-when">トーンアップ</span></div>
-      <div class="item-row"><span class="item-dot dot-morning"></span><span class="item-name">Pixel+ Glutathione Tone On Serum</span><span class="item-when">美白セラム</span></div>
-      <div class="item-row"><span class="item-dot dot-morning"></span><span class="item-name">VI C Estaxanthin Capsule</span><span class="item-when">抗酸化</span></div>
-      <div class="item-row"><span class="item-dot dot-night"></span><span class="item-name">Sominas Hyper Toning Ampoule</span><span class="item-when">AHA 週1-2</span></div>
-      <div class="item-row"><span class="item-dot dot-night"></span><span class="item-name">Dr.Oracle EPL Cure XD セット</span><span class="item-when">美白・バリア</span></div>
-      <div class="item-row"><span class="item-dot dot-night"></span><span class="item-name">Dr.Oracle RetinoTightening Cream</span><span class="item-when">レチノール</span></div>
-      <div class="item-row"><span class="item-dot dot-night"></span><span class="item-name">Retinal Peptide Capsule Cream</span><span class="item-when">レチナール</span></div>
-      <div class="item-row"><span class="item-dot dot-night"></span><span class="item-name">Dr.Oracle Reedle Shot Cica</span><span class="item-when">浸透補助</span></div>
-      <div class="item-row"><span class="item-dot dot-night"></span><span class="item-name">Reedle Shot Vita 3 + Glutathione</span><span class="item-when">美白浸透</span></div>
-      <div class="item-row"><span class="item-dot dot-night"></span><span class="item-name">Green Tomato NMN アンプル</span><span class="item-when">毛穴ケア</span></div>
-      <div class="item-row"><span class="item-dot dot-night"></span><span class="item-name">Green Tomato NMN トナー</span><span class="item-when">毛穴化粧水</span></div>
-      <div class="item-row"><span class="item-dot dot-both"></span><span class="item-name">PDRN Capsule Cream 100</span><span class="item-when">保湿ベース</span></div>
-      <div class="item-row"><span class="item-dot dot-night"></span><span class="item-name">Kopher Curepair Melder SOS</span><span class="item-when">集中修復</span></div>
+      <div class="item-row"><span class="item-dot dot-both"></span><span class="item-logo-tag logo-hanyul">Hanyul</span><span class="item-name">ヨモギ クレンジングフォーム</span><span class="item-when">洗顔</span></div>
+      <div class="item-row"><span class="item-dot dot-night"></span><span class="item-logo-tag logo-hanyul">Hanyul</span><span class="item-name">クレンジングパックバーム</span><span class="item-when">クレンジング</span></div>
+      <div class="item-row"><span class="item-dot dot-both"></span><span class="item-logo-tag logo-anua">Anua</span><span class="item-name">PDRN100 ヒアルロン酸トナー</span><span class="item-when">導入化粧水</span></div>
+      <div class="item-row"><span class="item-dot dot-morning"></span><span class="item-logo-tag logo-anua">Anua</span><span class="item-name">ビタミン3グルタチオントナー</span><span class="item-when">美白トナー</span></div>
+      <div class="item-row"><span class="item-dot dot-morning"></span><span class="item-logo-tag logo-blithe">Blithe</span><span class="item-name">Pressed Serum</span><span class="item-when">トーンアップ</span></div>
+      <div class="item-row"><span class="item-dot dot-morning"></span><span class="item-logo-tag logo-pixel">Pixel+</span><span class="item-name">Glutathione Tone On Serum</span><span class="item-when">美白セラム</span></div>
+      <div class="item-row"><span class="item-dot dot-morning"></span><span class="item-logo-tag logo-vi">VI C</span><span class="item-name">Estaxanthin Capsule</span><span class="item-when">抗酸化</span></div>
+      <div class="item-row"><span class="item-dot dot-night"></span><span class="item-logo-tag logo-sominas">Sominas</span><span class="item-name">Hyper Toning Ampoule</span><span class="item-when">AHA 週1-2</span></div>
+      <div class="item-row"><span class="item-dot dot-night"></span><span class="item-logo-tag logo-droracle">Dr.Oracle</span><span class="item-name">EPL Cure XD セット</span><span class="item-when">美白・バリア</span></div>
+      <div class="item-row"><span class="item-dot dot-night"></span><span class="item-logo-tag logo-droracle">Dr.Oracle</span><span class="item-name">RetinoTightening Cream</span><span class="item-when">レチノール</span></div>
+      <div class="item-row"><span class="item-dot dot-night"></span><span class="item-logo-tag logo-vi">VI</span><span class="item-name">Retinal Peptide Capsule Cream</span><span class="item-when">レチナール</span></div>
+      <div class="item-row"><span class="item-dot dot-night"></span><span class="item-logo-tag logo-reedle">Reedle</span><span class="item-name">Shot Cica Reeds</span><span class="item-when">浸透補助</span></div>
+      <div class="item-row"><span class="item-dot dot-night"></span><span class="item-logo-tag logo-reedle">Reedle</span><span class="item-name">Shot Vita 3 + Glutathione</span><span class="item-when">美白浸透</span></div>
+      <div class="item-row"><span class="item-dot dot-night"></span><span class="item-logo-tag logo-green">Green🍅</span><span class="item-name">Tomato NMN アンプル</span><span class="item-when">毛穴ケア</span></div>
+      <div class="item-row"><span class="item-dot dot-night"></span><span class="item-logo-tag logo-green">Green🍅</span><span class="item-name">Tomato NMN トナー</span><span class="item-when">毛穴化粧水</span></div>
+      <div class="item-row"><span class="item-dot dot-both"></span><span class="item-logo-tag logo-anua">Anua</span><span class="item-name">PDRN Capsule Cream 100</span><span class="item-when">保湿ベース</span></div>
+      <div class="item-row"><span class="item-dot dot-night"></span><span class="item-logo-tag logo-kopher">KOPHER</span><span class="item-name">Curepair Melder SOS</span><span class="item-when">集中修復</span></div>
     </div>
   </div>
 </section>
@@ -1399,9 +1568,132 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.section, .profile-inner, .full-inner, .score-inner').forEach(el => {
+document.querySelectorAll('.section, .profile-inner, .full-inner, .score-inner, .quiz-inner').forEach(el => {
   observer.observe(el);
 });
+
+// ===== SKIN QUIZ =====
+const QZqs=[
+  {q:"朝起きた直後の肌の状態は？",opts:[["つっぱり感がある",{dry:3,sensitive:1}],["少しテカっている",{oily:3,combo:1}],["Tゾーンのみテカる",{combo:3}],["特に気にならない",{normal:3}]]},
+  {q:"洗顔後、何もつけないでいると？",opts:[["すぐにつっぱって痒くなる",{dry:3,sensitive:2}],["20〜30分でテカってくる",{oily:3}],["Tゾーンだけテカる",{combo:3}],["特に問題ない",{normal:3}]]},
+  {q:"毛穴の悩みは？",opts:[["毛穴はほぼ気にならない",{dry:2,normal:2}],["黒ずみ毛穴が気になる",{oily:2,combo:2}],["開き毛穴が目立つ",{oily:3,combo:1}],["毛穴より乾燥が気になる",{dry:3,sensitive:1}]]},
+  {q:"ニキビや肌荒れの頻度は？",opts:[["ほとんど出ない",{normal:3,dry:1}],["Tゾーンに時々できる",{combo:3,oily:1}],["頬にも頻繁にできる",{oily:2,sensitive:2}],["刺激があるとすぐ荒れる",{sensitive:3}]]},
+  {q:"化粧水をつけた後の感触は？",opts:[["すぐ乾く、もっと欲しい",{dry:3}],["べたつく感じがする",{oily:2,combo:1}],["ちょうどいい",{normal:3,combo:1}],["刺激を感じることがある",{sensitive:3,dry:1}]]},
+  {q:"季節の変わり目に肌はどう変化する？",opts:[["乾燥して粉ふきしやすい",{dry:3}],["皮脂が増えてベタベタ",{oily:3}],["部位によって違う変化が出る",{combo:3}],["赤みや痒みが出やすい",{sensitive:3}]]},
+  {q:"ファンデーションの崩れ方は？",opts:[["粉っぽく崩れる",{dry:3,sensitive:1}],["テカリで崩れる",{oily:3}],["Tゾーンのみ崩れる",{combo:3}],["崩れるより荒れる方が気になる",{sensitive:3}]]},
+  {q:"新しいスキンケアを使ったとき、よくあるのは？",opts:[["保湿が足りなく感じる",{dry:3}],["重たくてベタつく",{oily:2,combo:1}],["特に何も感じない",{normal:3}],["赤みや反応が出やすい",{sensitive:3,dry:1}]]},
+];
+const QZtypes={
+  dry:{label:"乾燥肌",en:"Dry Skin",color:"#6aabdf",tips:["PDRNトナーで水分を土台からチャージ","朝晩PDRN Capsule Creamでバリアを守る","AHAは週1回以下に制限","セラミド美容液の追加を検討して"]},
+  oily:{label:"脂性肌（インナードライ注意）",en:"Oily / Inner Dry Skin",color:"#e0a060",tips:["洗いすぎに注意。皮脂はバリアの一部","PDRN100トナーを3回重ねづけする","Green Tomato NMNで毛穴を引き締め","ダブル洗顔は週3〜4回に減らす"]},
+  combo:{label:"混合肌",en:"Combination Skin",color:"#7abf7a",tips:["Tゾーンにのみ皮脂ケア成分を重ねる","Uゾーンには保湿を厚めに","夜の3日サイクルルーティンが特に有効","季節でケアを柔軟に切り替えて"]},
+  sensitive:{label:"敏感肌",en:"Sensitive Skin",color:"#df90b8",tips:["Reedle ShotはCicaのみの夜に使用","レチノールは米粒大から慎重にスタート","Hanyulヨモギ系の鎮静アイテムを優先","新しい成分は必ず1品ずつパッチテスト"]},
+  normal:{label:"普通肌",en:"Normal Skin",color:"#8abf8a",tips:["基本ルーティンの継続が最大のケア","エイジングケアを早めに取り入れると◎","日焼け止めが最も重要な投資","定期的にAHAでターンオーバーを整える"]},
+};
+
+let qzCur=0, qzAns=new Array(QZqs.length).fill(null);
+
+function qzRender(){
+  const body=document.getElementById('qz-body');
+  const prog=document.getElementById('qz-prog');
+  prog.style.width=((qzCur+1)/QZqs.length*100)+'%';
+  if(qzCur<QZqs.length){
+    const q=QZqs[qzCur];
+    body.innerHTML=`
+      <div class="qz-step">Question ${qzCur+1} / ${QZqs.length}</div>
+      <div class="qz-card">
+        <div class="qz-q">${q.q}</div>
+        <div class="qz-opts" id="qz-opts"></div>
+      </div>
+      <div class="qz-nav">
+        <button class="qz-btn" id="qz-prev" ${qzCur===0?'disabled':''}>← 戻る</button>
+        <button class="qz-btn gold" id="qz-next" ${qzAns[qzCur]===null?'disabled':''}>
+          ${qzCur===QZqs.length-1?'結果を見る →':'次へ →'}
+        </button>
+      </div>`;
+    const opts=document.getElementById('qz-opts');
+    q.opts.forEach((o,i)=>{
+      const btn=document.createElement('button');
+      btn.className='qz-opt'+(qzAns[qzCur]===i?' sel':'');
+      btn.textContent=o[0];
+      btn.onclick=()=>{
+        qzAns[qzCur]=i;
+        document.querySelectorAll('.qz-opt').forEach(b=>b.classList.remove('sel'));
+        btn.classList.add('sel');
+        document.getElementById('qz-next').disabled=false;
+      };
+      opts.appendChild(btn);
+    });
+    document.getElementById('qz-prev').onclick=()=>{if(qzCur>0){qzCur--;qzRender();}};
+    document.getElementById('qz-next').onclick=()=>{
+      if(qzAns[qzCur]!==null){
+        if(qzCur<QZqs.length-1){qzCur++;qzRender();}
+        else qzShowResult();
+      }
+    };
+  }
+}
+
+function qzShowResult(){
+  const scores={dry:0,oily:0,combo:0,sensitive:0,normal:0};
+  QZqs.forEach((q,qi)=>{
+    if(qzAns[qi]!==null){
+      const sc=q.opts[qzAns[qi]][1];
+      Object.entries(sc).forEach(([k,v])=>scores[k]=(scores[k]||0)+v);
+    }
+  });
+  const total=Object.values(scores).reduce((a,b)=>a+b,0)||1;
+  const top=Object.entries(scores).sort((a,b)=>b[1]-a[1])[0][0];
+  const t=QZtypes[top];
+  document.getElementById('qz-prog').style.width='100%';
+  const pcts={};
+  Object.entries(scores).forEach(([k,v])=>pcts[k]=Math.round(v/total*100));
+
+  const scoresHtml=Object.entries(QZtypes).map(([k,tv])=>{
+    const p=pcts[k]||0;
+    const r=20, circ=2*Math.PI*r, fill=circ*(p/100);
+    return `<div class="qz-score-item">
+      <span class="qz-score-label">${tv.label.split('（')[0]}</span>
+      <div class="qz-score-ring">
+        <svg width="44" height="44" viewBox="0 0 44 44">
+          <circle cx="22" cy="22" r="${r}" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="3"/>
+          <circle cx="22" cy="22" r="${r}" fill="none" stroke="${tv.color}" stroke-width="3"
+            stroke-dasharray="${fill} ${circ}" stroke-linecap="round"/>
+        </svg>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)">
+          <span class="qz-score-pct" style="color:${tv.color}">${p}%</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  const tipsHtml=t.tips.map(tip=>`<div class="qz-tip"><span class="qz-tip-dot"></span><span>${tip}</span></div>`).join('');
+
+  const innerDryNote = top==='oily' ? `<div class="qz-inner-dry-note">💡 脂性肌と出ても、乾燥肌の可能性があります。皮脂が多い原因が水分不足（インナードライ）のことも。まずは徹底的な保湿ケアを試してみてください。</div>` : '';
+
+  document.getElementById('qz-body').innerHTML=`
+    <div class="qz-result">
+      <div class="qz-result-top">
+        <div class="qz-result-type" style="color:${t.color}">${t.label}</div>
+        <span class="qz-result-en">${t.en}</span>
+        <div class="qz-scores">${scoresHtml}</div>
+        ${innerDryNote}
+      </div>
+      <div class="qz-tips">
+        <div class="qz-tips-title">あなたへのスキンケアアドバイス</div>
+        ${tipsHtml}
+      </div>
+      <button class="qz-retry" onclick="qzRestart()">↺ もう一度診断する</button>
+    </div>`;
+}
+
+function qzRestart(){
+  qzCur=0; qzAns=new Array(QZqs.length).fill(null);
+  document.getElementById('qz-prog').style.width='12.5%';
+  qzRender();
+}
+
+qzRender();
 </script>
 
 </body>
